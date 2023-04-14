@@ -17,6 +17,9 @@ header {
     align-items: center;
     width: 100%;
     color: wheat;
+
+    /* set display: inline-flex; */
+    /* remove class hide? */
 }
 
 #score {
@@ -46,8 +49,8 @@ header {
 }
 
 #one-ring {
-    width: 25%;
-    height: 25%;
+    width: 50%;
+    height: 50%;
     margin: 2%;
 }
 
@@ -61,7 +64,14 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+    height: 100vh; 
+    background-image: url('images/doors-of-durin.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    
+    /* set background-image:none */
 }
 
 .question-box {
@@ -97,8 +107,25 @@ h2 {
     background-color: white;
 }
 
+#start-box {
+    border: solid;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 5%;
+    background-color: wheat;
+    box-shadow: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    margin: 2%;
+    width: 60%;
+}
+
 #start-button {
-    font-size: x-large;
+    font-size: 30px;
+    font-style: italic;
     text-decoration: underline;
     font-weight: bold;
     border: solid;
@@ -111,6 +138,7 @@ h2 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 90%;
 }
 
 #start-button:hover {
@@ -121,3 +149,5 @@ h2 {
 .hide {
     display: none;
 }
+
+/* apply class hide to question1, question2, question3, question4, question5, header

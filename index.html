@@ -5,46 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>LOTR Quiz</title>
-    <link rel="stylesheet" href="Develop/assets/style.css"/>
+    <link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
-    <div class = "questions">
-        <div id = "question1">
-            <h2>What age did Bilbo Baggins turn during his birthday celebration in the Shire?</h2>
-            <input type="button" class="choices" value="109">
-            <input type="button" class="choices" value="110">
-            <input type="button" class="choices" value="111">
-            <input type="button" class="choices" value="112">
+    <div class="content">
+        <div class="question-box">
+            <button type="button" id="start-button">
+            <img id="one-ring" src="assets/images/one-ring.png">
+            FORTH EORLINGAS
+            <img id="one-ring" src="assets/images/one-ring.png">
+            </button>
         </div>
-        <div id = "question2">
-            <h2>Which of the following hobbits was NOT a member of the Fellowship of the Ring?</h2>
-            <input type="button" class="choices" value="Meriadoc Brandybuck">
-            <input type="button" class="choices" value="Bilbo Baggins">
-            <input type="button" class="choices" value="Peregrin Took">
-            <input type="button" class="choices" value="Sam-wise Gamgee">
+        <div class = "question-box" id = "question1">
+            <div class="question-header">
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+                <h2>What age did Bilbo Baggins turn during his birthday celebration in the Shire?</h2>
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+            </div>
+            <button type="button" class="incorrect, question-button">109</button>
+            <button type="button" class="incorrect, question-button">110</button>
+            <button type="button" class="correct, question-button">111</button>
+            <button type="button" class="incorrect, question-button">112</button>
         </div>
-        <div id = "question3">
-            <h2>Which of the following was NOT a gift to the fellowship by Lady Galadriel?</h2>
-            <input type="button" class="choices" value="Lembas Bread">
-            <input type="button" class="choices" value="Star or Eärendil">
-            <input type="button" class="choices" value="Elven cloaks & brooches">
-            <input type="button" class="choices" value="Andúril - the Flame of the West">
+        <div class = "question-box" id = "question2">
+            <div class="question-header">
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+                <h2>Which of the following hobbits was NOT a member of the Fellowship of the Ring?</h2>
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+            </div>
+            <button type="button" class="incorrect, question-button">Meriadoc Brandybuck</button>
+            <button type="button" class="correct, question-button">Bilbo Baggins</button>
+            <button type="button" class="incorrect, question-button">Peregrin Took</button>
+            <button type="button" class="incorrect, question-button">Sam-wise Gamgee</button>
         </div>
-        <div id = "question4">
-            <h2>Which of the following agents of Mordor was vanquished by Éowyn during the Battle of Pelennor Fields?</h2>
-            <input type="button" class="choices" value="the Witch-king of Angmar">
-            <input type="button" class="choices" value="Gothmog - Lieutenant of Morgul">
-            <input type="button" class="choices" value="Lurtz - the Uruk-hai">
-            <input type="button" class="choices" value="Gríma - the Wormtongue">  
+        <div class = "question-box" id = "question3">
+            <div class="question-header">
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+                <h2>Which of the following was NOT a gift to the fellowship by Lady Galadriel?</h2>
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+            </div>
+            <button type="button" class="incorrect, question-button">Lembas Bread</button>
+            <button type="button" class="incorrect, question-button">Star or Eärendil</button>
+            <button type="button" class="incorrect, question-button">Elven cloaks & brooches</button>
+            <button type="button" class="correct, question-button">Andúril - the Flame of the West</button>
         </div>
-        <div id = "question5">
-            <h2>How many rings of power were granted to the Dwarf-lords by Sauron?</h2>
-            <input type="button" class="choices" value="3">
-            <input type="button" class="choices" value="7">
-            <input type="button" class="choices" value="9">
-            <input type="button" class="choices" value="1">  
+        <div class = "question-box" id = "question4">
+            <div class="question-header">
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+                <h2>Which of the following agents of Mordor was vanquished by Éowyn during the Battle of Pelennor Fields?</h2>
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+            </div>
+            <button type="button" class="correct, question-button">the Witch-king of Angmar</button>
+            <button type="button" class="incorrect, question-button">Gothmog - Lieutenant of Morgul</button>
+            <button type="button" class="incorrect, question-button">Lurtz - the Uruk-hai</button>
+            <button type="button" class="incorrect, question-button">Gríma - the Wormtongue</button>
+        </div>
+        <div class = "question-box" id = "question5">
+            <div class="question-header">
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+                <h2>How many rings of power were granted to the Dwarf-lords by Sauron?</h2>
+                <img class="leaf-icon" src="assets/images/leaf-icon.png">
+            </div>
+            <button type="button" class="incorrect, question-button">3</button>
+            <button type="button" class="correct, question-button">7</button>
+            <button type="button" class="incorrect, question-button">9</button>
+            <button type="button" class="incorrect, question-button">1</button>
         </div>
     </div>
 </body>
-<script src="Develop/assets/script.js"></script>
+<script src="assets/script.js"></script>
 </html>

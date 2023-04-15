@@ -17,9 +17,6 @@ header {
     align-items: center;
     width: 100%;
     color: wheat;
-
-    /* set display: inline-flex; */
-    /* remove class hide? */
 }
 
 #score, #time {
@@ -70,8 +67,6 @@ h2 {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 40%;
-    
-    /* set background-image:none */
 }
 
 .question-box {

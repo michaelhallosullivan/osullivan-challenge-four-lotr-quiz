@@ -5,76 +5,76 @@ const submitButton = document.getElementById('submit');
 
 
 var questionOptions = [
-    {
-      question: "What age did Bilbo Baggins turn during his birthday celebration in the Shire?",
+  {
+    question: "What age did Bilbo Baggins turn during his birthday celebration in the Shire?",
+    answers: {
+      a2: "109",
+      b2: "110",
+      c2: "111",
+      d2: "112"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Which of the following hobbits was NOT a member of the Fellowship of the Ring?",
+    answers: {
+      a2: "Meriadoc Brandybuck",
+      b2: "Bilbo Baggins",
+      c2: "Peregrin Took",
+      d2: "Sam-wise Gamgee"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "Which of the following was NOT a gift to the fellowship by Lady Galadriel?",
+    answers: {
+      a2: "Lembas Bread",
+      b2: "Star of Eärendil",
+      c2: "Elven cloaks & brooches",
+      d2: "Andúril - the Flame of the West"
+    },
+    correctAnswer: "d"
+  },
+  {
+      question: "Which of the following agents of Mordor was vanquished by Éowyn during the Battle of Pelennor Fields?",
       answers: {
-        a: "109",
-        b: "110",
-        c: "111",
-        d: "112"
+        a2: "the Witch-king of Angmar",
+        b2: "Gothmog - Lieutenant of Morgul",
+        c2: "Lurtz - the Uruk-hai",
+        d2: "Gríma - the Wormtongue"
       },
-      correctAnswer: "c"
+      correctAnswer: "a"
     },
     {
-      question: "Which of the following hobbits was NOT a member of the Fellowship of the Ring?",
+      question: "How many rings of power were granted to the Dwarf-lords by Sauron?",
       answers: {
-        a: "Meriadoc Brandybuck",
-        b: "Bilbo Baggins",
-        c: "Peregrin Took",
-        d: "Sam-wise Gamgee"
+        a2: "3",
+        b2: "7",
+        c2: "9",
+        d2: "1"
       },
       correctAnswer: "b"
-    },
-    {
-      question: "Which of the following was NOT a gift to the fellowship by Lady Galadriel?",
-      answers: {
-        a: "Lembas Bread",
-        b: "Star of Eärendil",
-        c: "Elven cloaks & brooches",
-        d: "Andúril - the Flame of the West"
-      },
-      correctAnswer: "d"
-    },
-    {
-        question: "Which of the following agents of Mordor was vanquished by Éowyn during the Battle of Pelennor Fields?",
-        answers: {
-          a: "the Witch-king of Angmar",
-          b: "Gothmog - Lieutenant of Morgul",
-          c: "Lurtz - the Uruk-hai",
-          d: "Gríma - the Wormtongue"
-        },
-        correctAnswer: "a"
-      },
-      {
-        question: "How many rings of power were granted to the Dwarf-lords by Sauron?",
-        answers: {
-          a: "3",
-          b: "7",
-          c: "9",
-          d: "1"
-        },
-        correctAnswer: "b"
-      }
-  ];
+    }
+];
 
 
 function getRandom() { 
-    Math.floor(Math.random()*questionOptions.length);
+  Math.floor(Math.random()*questionOptions.length);
 };
-  
+
 var currentQuestion = questionOptions[getRandom];
 
 function createQuestion() {
-  var questionHeader = document.querySelector("#question-header");
-  var a = document.querySelector("#a");
-  var b = document.querySelector("#b");
-  var c = document.querySelector("#c");
-  var d = document.querySelector("#d");
-    questionHeader.innerText = currentQuestion.question;
-    a.textContent = currentQuestion.answers.a;
-    b.textContent = currentQuestion.answers.b;
-    c.textContent = currentQuestion.answers.c;
-    d.textContent = currentQuestion.answers.d;
+var questionHeader = document.querySelector(".question-header");
+var a1 = document.querySelector("#a1");
+var b1 = document.querySelector("#b1");
+var c1 = document.querySelector("#c1");
+var d1 = document.querySelector("#d1");
+  questionHeader.textContent = currentQuestion.question;
+  a1.textContent = currentQuestion.answers.a2;
+  b1.textContent = currentQuestion.answers.b2;
+  c1.textContent = currentQuestion.answers.c2;
+  d1.textContent = currentQuestion.answers.d2;
 };
 
 // YOU ARE REVIEWING STEVE'S JAVASCRIPT AND ADJUSTING YOUR CODE. YOU ARE AT LINE 110 TRYING TO GENERATE QUESTIONS

@@ -56,21 +56,26 @@ var progressBar = document.querySelector("header");
 var quiz = document.querySelector("#quiz");
 var questionBox = document.querySelector(".question-box");
 var timerContainer = document.querySelector("#time");
-var time = 360;
+var time = 150;
 var scoreContainer = document.querySelector("#score");
 var score = 0;
 var questionButton = document.querySelector(".question-button");
 var questionHeader = document.querySelector(".question-header");
-//generates random number between 0 and 4
-var getRandom = Math.floor(Math.random()*questionOptions.length);
-//calls on random question from questionOptions array
+/* calls on random question from questionOptions array
+var index = questionOptions.length;
+var getRandom = Math.floor(Math.random()*index);
 var currentQuestion = questionOptions[getRandom];
+*/
+var index = 0;
+var currentQuestion = questionOptions[index];
 var a1 = document.querySelector("#a1");
 var b1 = document.querySelector("#b1");
 var c1 = document.querySelector("#c1");
 var d1 = document.querySelector("#d1");
 var nextButton = document.createElement("button");
     nextButton.textContent = "Next Question";
+var resultsButton = document.createElement("button");
+    resultsButton.classList.add("question-button");
     
 
 function beginGame() {
@@ -104,6 +109,7 @@ function countdownTimer() {
 }
 
 function createQuestion() {
+  //generates random number between 0 and 4
     questionHeader.textContent = currentQuestion.question;
     a1.textContent = currentQuestion.answers.a2;
     b1.textContent = currentQuestion.answers.b2;
@@ -112,21 +118,35 @@ function createQuestion() {
 /*creates new array called previousQuestions, containing the question that was selected at random.
 that question is removed from the array called questionOptions
 questionOptions.length is updated (-1)
-*/
+
     var previousQuestions = questionOptions.splice(getRandom, 1);
-    console.log(questionOptions.length);
-    console.log(previousQuestions.length);
+    */
+}
+
+function hideQuestions() {
+  a1.classList.add("hide");
+  a1.classList.remove("question-button");
+  b1.classList.add("hide");
+  b1.classList.remove("question-button");
+  c1.classList.add("hide");
+  c1.classList.remove("question-button");
+  d1.classList.add("hide");
+  d1.classList.remove("question-button");
+}
+
+function showQuestions() {
+  a1.classList.remove("hide");
+  a1.classList.add("question-button");
+  b1.classList.remove("hide");
+  b1.classList.add("question-button");
+  c1.classList.remove("hide");
+  c1.classList.add("question-button");
+  d1.classList.remove("hide");
+  d1.classList.add("question-button");
 }
 
 function checkAnswer() {
-    a1.classList.add("hide");
-    a1.classList.remove("question-button");
-    b1.classList.add("hide");
-    b1.classList.remove("question-button");
-    c1.classList.add("hide");
-    c1.classList.remove("question-button");
-    d1.classList.add("hide");
-    d1.classList.remove("question-button");
+    hideQuestions();
     if (this.textContent === currentQuestion.correctAnswer) {
         score++;
         questionHeader.textContent = "CORRECT";
@@ -141,28 +161,16 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+    index = index + 1;
+    currentQuestion = questionOptions[index];
     nextButton.classList.remove("question-button");
     nextButton.classList.add("hide");
-    a1.classList.remove("hide");
-    a1.classList.add("question-button");
-    b1.classList.remove("hide");
-    b1.classList.add("question-button");
-    c1.classList.remove("hide");
-    c1.classList.add("question-button");
-    d1.classList.remove("hide");
-    d1.classList.add("question-button");
-    var getRandom = Math.floor(Math.random()*questionOptions.length);
-    var currentQuestion = questionOptions[getRandom];
-    questionHeader.textContent = currentQuestion.question;
-    a1.textContent = currentQuestion.answers.a2;
-    b1.textContent = currentQuestion.answers.b2;
-    c1.textContent = currentQuestion.answers.c2;
-    d1.textContent = currentQuestion.answers.d2;
-    var previousQuestions = questionOptions.splice(getRandom, 1);
-    console.log(questionOptions.length);
-    console.log(previousQuestions.length);
-    if (questionOptions.length === 0) {
-        showResults();
+    if (index <= 4) {
+      showQuestions();
+      createQuestion();
+    }
+    if (index > 4) {
+      gameEnd();
     }
 }
 
@@ -170,17 +178,26 @@ function gameOver() {
     progressBar.style.setProperty("color", "red");
 }
 
-function showResults() {
+function gameEnd() {
     nextButton.classList.remove("question-button");
     nextButton.classList.add("hide");
-    a1.classList.add("hide");
-    a1.classList.remove("question-button");
-    b1.classList.add("hide");
-    b1.classList.remove("question-button");
-    c1.classList.add("hide");
-    c1.classList.remove("question-button");
-    d1.classList.add("hide");
-    d1.classList.remove("question-button");
+    hideQuestions();
+    questionHeader.textContent = "Click below for results";
+    resultsButton.textContent = "Results";
+    quiz.appendChild(resultsButton);
+}
+
+function showResults() {
+  questionHeader.textContent = "RESULTS";
+  resultsButton.classList.add("hide");
+  resultsButton.classList.remove("question-button");
+  a1.classList.add("question-button");
+  a1.classList.remove("hide");
+  a1.textContent = time + " seconds left";
+  b1.classList.add("question-button");
+  b1.classList.remove("hide");
+  b1.textContent = score + " question(s) correct";
+  progressBar.classList.add("hide");
 }
 
 startButton.addEventListener("click", beginGame);
@@ -189,6 +206,4 @@ b1.addEventListener("click", checkAnswer);
 c1.addEventListener("click", checkAnswer);
 d1.addEventListener("click", checkAnswer);
 nextButton.addEventListener("click", nextQuestion);
-
-
-//fix CORRECT vs INCORRECT
+resultsButton.addEventListener("click", showResults);

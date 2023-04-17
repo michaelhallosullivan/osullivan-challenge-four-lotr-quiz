@@ -56,16 +56,11 @@ var progressBar = document.querySelector("header");
 var quiz = document.querySelector("#quiz");
 var questionBox = document.querySelector(".question-box");
 var timerContainer = document.querySelector("#time");
-var time = 150;
+var time = 90;
 var scoreContainer = document.querySelector("#score");
 var score = 0;
 var questionButton = document.querySelector(".question-button");
 var questionHeader = document.querySelector(".question-header");
-/* calls on random question from questionOptions array
-var index = questionOptions.length;
-var getRandom = Math.floor(Math.random()*index);
-var currentQuestion = questionOptions[getRandom];
-*/
 var index = 0;
 var currentQuestion = questionOptions[index];
 var a1 = document.querySelector("#a1");
@@ -75,25 +70,21 @@ var d1 = document.querySelector("#d1");
 var nextButton = document.createElement("button");
     nextButton.textContent = "Next Question";
 var resultsButton = document.createElement("button");
-    resultsButton.classList.add("question-button");
+    resultsButton.textContent = "Results";
+var tryAgain = document.createElement("button");
+    tryAgain.textContent = "Try again?";
     
 
 function beginGame() {
     var content = document.querySelector(".content");
     var startBox = document.querySelector("#start-box");
-    //removes doors of during upon entering
     content.style.setProperty("background-image", "none");
-    //adds progressbar to top of screen
     progressBar.classList.remove("hide");
-    //removes starting box from page
     startBox.classList.add("hide");
     startBox.removeAttribute("id");
-    //adds question1 to screen
     quiz.classList.remove("hide");
     quiz.classList.add("question-box");
-    //starts interval calls countdownTimer function
     setInterval(countdownTimer, 1000);
-    //randomly inputs question data
     createQuestion();
 }
 
@@ -103,24 +94,17 @@ function countdownTimer() {
     timerContainer.textContent = time;
     scoreContainer.textContent = score;
     }
-    if (time === 0) {
+    if (time <= 0) {
     gameOver();
     }
 }
 
 function createQuestion() {
-  //generates random number between 0 and 4
     questionHeader.textContent = currentQuestion.question;
     a1.textContent = currentQuestion.answers.a2;
     b1.textContent = currentQuestion.answers.b2;
     c1.textContent = currentQuestion.answers.c2;
     d1.textContent = currentQuestion.answers.d2;
-/*creates new array called previousQuestions, containing the question that was selected at random.
-that question is removed from the array called questionOptions
-questionOptions.length is updated (-1)
-
-    var previousQuestions = questionOptions.splice(getRandom, 1);
-    */
 }
 
 function hideQuestions() {
@@ -175,7 +159,13 @@ function nextQuestion() {
 }
 
 function gameOver() {
-    progressBar.style.setProperty("color", "red");
+    progressBar.classList.add("hide");
+    hideQuestions();
+    nextButton.classList.remove("question-button");
+    nextButton.classList.add("hide");
+    questionHeader.textContent = "YOU'RE OUT OF TIME!";
+    quiz.appendChild(tryAgain);
+    tryAgain.classList.add("question-button");
 }
 
 function gameEnd() {
@@ -183,8 +173,8 @@ function gameEnd() {
     nextButton.classList.add("hide");
     hideQuestions();
     questionHeader.textContent = "Click below for results";
-    resultsButton.textContent = "Results";
     quiz.appendChild(resultsButton);
+    resultsButton.classList.add("question-button");
 }
 
 function showResults() {
@@ -200,6 +190,21 @@ function showResults() {
   progressBar.classList.add("hide");
 }
 
+function resetGame() {
+  tryAgain.classList.add("hide")
+  tryAgain.classList.remove("question-button");
+  progressBar.classList.remove("hide");
+  time = 90;
+  index = 0;
+  score = 0;
+  showQuestions();
+  createQuestion();
+}
+
+function saveResults() {
+
+}
+
 startButton.addEventListener("click", beginGame);
 a1.addEventListener("click", checkAnswer);
 b1.addEventListener("click", checkAnswer);
@@ -207,3 +212,5 @@ c1.addEventListener("click", checkAnswer);
 d1.addEventListener("click", checkAnswer);
 nextButton.addEventListener("click", nextQuestion);
 resultsButton.addEventListener("click", showResults);
+tryAgain.addEventListener("click", resetGame);
+

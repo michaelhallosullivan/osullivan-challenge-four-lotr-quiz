@@ -73,6 +73,17 @@ var resultsButton = document.createElement("button");
     resultsButton.textContent = "Results";
 var tryAgain = document.createElement("button");
     tryAgain.textContent = "Try again?";
+var initialsInput = document.createElement("input");
+    initialsInput.type = "text";
+    initialsInput.setAttribute("id", "initials");
+var initialsLabel = document.createElement("label");
+    initialsLabel.setAttribute("for", "initials"); 
+    initialsLabel.textContent = "Initials";
+var finalTime = document.createElement("p");
+var finalScore = document.createElement("p");
+var saveButton = document.createElement("button");
+    saveButton.textContent = "Save Results";
+var results = document.querySelector("#results");
     
 
 function beginGame() {
@@ -181,13 +192,19 @@ function showResults() {
   questionHeader.textContent = "RESULTS";
   resultsButton.classList.add("hide");
   resultsButton.classList.remove("question-button");
-  a1.classList.add("question-button");
-  a1.classList.remove("hide");
-  a1.textContent = time + " seconds left";
-  b1.classList.add("question-button");
-  b1.classList.remove("hide");
-  b1.textContent = score + " question(s) correct";
+  quiz.appendChild(finalTime);
+  quiz.appendChild(finalScore);
+  finalTime.classList.add("question-button");
+  finalTime.textContent = time + " seconds left";
+  finalScore.textContent = score + " question(s) correct";
+  finalScore.classList.add("question-button");
   progressBar.classList.add("hide");
+  quiz.appendChild(initialsLabel);
+  initialsLabel.classList.add("question-button");
+  quiz.appendChild(initialsInput);
+  initialsInput.classList.add("question-button");
+  quiz.appendChild(saveButton);
+  saveButton.classList.add("question-button");
 }
 
 function resetGame() {
@@ -201,8 +218,36 @@ function resetGame() {
   createQuestion();
 }
 
-function saveResults() {
-
+function saveResults(event) {
+  event.preventDefault();
+  questionHeader.textContent = "Previous Result";
+  hideQuestions();
+  results.classList.add("question-button");
+  finalTime.classList.remove("question-button");
+  finalTime.classList.add("hide");
+  finalScore.classList.remove("question-button");
+  finalScore.classList.add("hide");
+  initialsInput.classList.remove("question-button");
+  initialsInput.classList.add("hide");
+  initialsLabel.classList.remove("question-button");
+  initialsLabel.classList.add("hide");
+  saveButton.classList.remove("question-button");
+  saveButton.classList.add("hide");
+  var finalResults = {
+    initials: initialsInput.value,
+    score: score
+  };
+  localStorage.setItem("score", JSON.stringify(finalResults));
+  quiz.appendChild(tryAgain);
+  tryAgain.classList.add("question-button");
+  tryAgain.classList.remove("hide");
+  function renderMessage() {
+  var savedResult = JSON.parse(localStorage.getItem("finalResults"));
+  if (lastGrade !== null) {
+  results.textContent = savedResult.initials + " scored" + savedResult.score + " out of 5.";
+  };
+  };
+  renderMessage();
 }
 
 startButton.addEventListener("click", beginGame);
@@ -213,4 +258,4 @@ d1.addEventListener("click", checkAnswer);
 nextButton.addEventListener("click", nextQuestion);
 resultsButton.addEventListener("click", showResults);
 tryAgain.addEventListener("click", resetGame);
-
+saveButton.addEventListener("click", saveResults);

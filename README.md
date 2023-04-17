@@ -38,4 +38,4 @@ All code created by Michael O'Sullivan.
 
 MIT License
 
-![Model](https://github.com/michaelhallosullivan/osullivan-challenge-four-lotr-quiz/blob/main/assets/images/lotr-quiz.jpg)
+![Model](https://github.com/michaelhallosullivan/osullivan-challenge-four-lotr-quiz/blob/main/assets/images/challenge-four-screenshot.jpg)
